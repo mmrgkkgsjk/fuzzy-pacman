@@ -3,12 +3,6 @@
 fpm is a fuzzy and interactive wrapper around pacman using **skim (sk)**.  
 It provides fast package management via fuzzy menus with real-time previews and multi-selection.
 
-All functionality is grouped under a single command:
-
-```
-fpm <subcommand>
-```
-
 ---
 
 # Features
@@ -23,90 +17,6 @@ fpm <subcommand>
 - Clean pacman cache via fuzzy interface
 - Browse packages by repository
 - Fully keyboard-driven and fast
-
----
-
-# Subcommands
-
-### Install packages
-
-```
-fpm add
-```
-
-### Remove installed packages
-
-```
-fpm rm
-```
-
-### Search repository packages
-
-```
-fpm search
-```
-
-### Show info about installed packages
-
-```
-fpm info
-```
-
-### List files installed by a package
-
-```
-fpm files
-```
-
-### Remove orphan dependencies
-
-```
-fpm orphans
-```
-
-### Show available updates
-
-```
-fpm update
-```
-
-### Search which package provides a file (from repos)
-
-```
-fpm file
-```
-
-### Search which package owns a system file (installed)
-
-```
-fpm own
-```
-
-### Explore packages by repo (core, extra, multilib)
-
-```
-fpm repo
-```
-
-### Fuzzy browse systemd services
-
-```
-fpm svc
-```
-
-### Clean pacman cache interactively
-
-```
-fpm cache
-```
-
----
-
-# Dependencies
-
-- pacman
-- skim (sk)
-- systemd (for svc subcommand)
 
 ---
 
@@ -155,37 +65,38 @@ sudo install -Dm755 fpm /usr/bin/fpm
 
 ---
 
-# Usage examples
+# Available commands
 
 Install packages:
 
 ```bash
-fpm add
+fpm - fuzzy pacman wrapper
+
+Commands:
+  sync      Sync pacman databases (pacman -Sy)
+  add       Install packages
+  rm        Remove packages
+  search    Search repository
+  info      Inspect installed packages
+  update    Show updates
+  files     List package files
+  orphans   Remove orphan dependencies
+  file      Repo file provider lookup
+  own       Installed file owner lookup
+  repo      Browse repositories
+  svc       Browse systemd services
+  cache     Clean pacman cache
+  bulk      Bulk menu
+  help      Show help
 ```
 
-Remove packages:
+---
 
-```bash
-fpm rm
-```
+# Dependencies
 
-Search repository packages:
-
-```bash
-fpm search
-```
-
-Browse systemd services:
-
-```bash
-fpm svc
-```
-
-Clean the pacman cache:
-
-```bash
-fpm cache
-```
+- pacman
+- skim (sk)
+- systemd (for svc subcommand)
 
 ---
 
