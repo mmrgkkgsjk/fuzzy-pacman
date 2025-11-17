@@ -1,0 +1,105 @@
+#!/bin/bash
+
+# fpm: fuzzy pacman with skim
+
+cmd="$1"
+shift
+
+case "$cmd" in
+
+  add)
+    pacman -Sl \
+      | sk --ansi --multi --preview "pacman -Si {2}" \
+      | awk '{print $2}' \
+      | xargs -r sudo pacman -S
+    ;;
+
+  rm)
+    pacman -Q \
+      | sk --ansi --multi --preview "pacman -Qi {1}" \
+      | awk '{print $1}' \
+      | xargs -r sudo pacman -Rns
+    ;;
+
+  search)
+    pacman -Sl \
+      | sk --ansi --multi --preview "pacman -Si {2}" \
+      | awk '{print $2}'
+    ;;
+
+  info)
+    pacman -Q \
+      | sk --ansi --preview "pacman -Qi {1}" \
+      | awk '{print $1}'
+    ;;
+
+  files)
+    pacman -Q \
+      | sk --ansi --preview "pacman -Ql {1}" \
+      | awk '{print $1}'
+    ;;
+
+  orphans)
+    pacman -Qdt \
+      | sk --ansi --multi --preview "pacman -Qi {1}" \
+      | awk '{print $1}' \
+      | xargs -r sudo pacman -Rns
+    ;;
+
+  upd)
+    pacman -Qu \
+      | sk --ansi --preview "pacman -Si {1}" \
+      | awk '{print $1}'
+    ;;
+
+  file)
+    pacman -Fl \
+      | sk --ansi --multi --preview "pacman -Fl {1}"
+    ;;
+
+  own)
+    sk --ansi --preview "pacman -Qo {}" \
+      <<< "$(find /usr -type f 2>/dev/null)" 
+    ;;
+
+  repo)
+    REPO=$(echo -e "core\nextra\nmultilib" | sk --ansi)
+    pacman -Sl "$REPO" \
+      | sk --ansi --preview "pacman -Si {2}"
+    ;;
+
+  svc)
+    systemctl list-units --type=service --all \
+      | sk --ansi --preview "systemctl status {1}" \
+      | awk '{print $1}'
+    ;;
+
+  cache)
+    ls /var/cache/pacman/pkg \
+      | sk --ansi --multi --preview "ls -lh /var/cache/pacman/pkg/{1}" \
+      | xargs -r -I{} sudo rm "/var/cache/pacman/pkg/{}"
+    ;;
+
+  *)
+    echo "fpm (fuzzy pacman)"
+    echo ""
+    echo "Available subcommands:"
+    echo "  fpm add        Install packages"
+    echo "  fpm rm         Remove installed packages"
+    echo "  fpm search     Search repo packages"
+    echo "  fpm info       Inspect installed packages"
+    echo "  fpm files      Show files of installed packages"
+    echo "  fpm orphans    Remove orphan dependencies"
+    echo "  fpm upd        Show available updates"
+    echo "  fpm file       Search which package provides a file"
+    echo "  fpm own        Check which package owns a system file"
+    echo "  fpm repo       Browse packages by repo"
+    echo "  fpm svc        Explore systemd services"
+    echo "  fpm cache      Clean pacman cache interactively"
+    echo ""
+    echo "Example:"
+    echo "  fpm add        # install packages"
+    echo "  fpm rm         # remove packages"
+    ;;
+
+esac

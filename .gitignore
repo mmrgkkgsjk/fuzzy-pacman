@@ -1,0 +1,23 @@
+# Editor configs
+.vscode/
+.idea/
+
+# Built packages
+*.pkg.*
+*.pkg.tar.*
+*.pkg.tar.zst
+
+# Pacman source metadata
+.SRCINFO
+
+# Build files
+src/
+pkg/
+
+# Logs
+*.log
+
+# Backup/temporary files
+*~
+*.swp
+.DS_Store

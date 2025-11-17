@@ -1,0 +1,108 @@
+.TH FPM 1 "2025-01-01" "fuzzy-pacman 1.0.0" "User Commands"
+
+.SH NAME
+fpm \- fuzzy pacman wrapper using skim (sk)
+
+.SH SYNOPSIS
+.B fpm
+[\fIsubcommand\fR]
+
+.SH DESCRIPTION
+\fBfpm\fR is a fuzzy and interactive wrapper for pacman using skim (sk).  
+It provides fast package management with fuzzy filtering, previews, multi-selection and system utilities.
+
+All features are accessed through subcommands:
+
+.PP
+.B fpm <subcommand>
+
+.SH SUBCOMMANDS
+
+.TP
+.B add
+Install packages from the official repositories using fuzzy search.
+
+.TP
+.B rm
+Remove installed packages with fuzzy selection.
+
+.TP
+.B search
+Search for packages in the repositories.
+
+.TP
+.B info
+Inspect installed packages.
+
+.TP
+.B files
+List files belonging to installed packages.
+
+.TP
+.B orphans
+Remove orphaned dependencies.
+
+.TP
+.B upd
+Show pending package updates.
+
+.TP
+.B file
+Search for which repository package provides a file.
+
+.TP
+.B own
+Search which installed package owns a file in the system.
+
+.TP
+.B repo
+Browse packages by repository (core, extra, multilib).
+
+.TP
+.B svc
+Explore systemd services with fuzzy selection.
+
+.TP
+.B cache
+Interactively clean the pacman cache.
+
+.SH EXAMPLES
+
+.TP
+Install packages:
+.B fpm add
+
+.TP
+Remove installed packages:
+.B fpm rm
+
+.TP
+Search repository packages:
+.B fpm search
+
+.TP
+Show available updates:
+.B fpm upd
+
+.TP
+Manage systemd services:
+.B fpm svc
+
+.TP
+Clean pacman cache:
+.B fpm cache
+
+.SH DEPENDENCIES
+pacman  
+skim (sk)  
+systemd (for svc subcommand)
+
+.SH FILES
+/usr/bin/fpm  
+/usr/share/man/man1/fpm.1.gz
+
+.SH AUTHOR
+Bruno Silva
+
+.SH LICENSE
+MIT License
